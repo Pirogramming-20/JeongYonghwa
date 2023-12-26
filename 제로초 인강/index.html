@@ -79,9 +79,14 @@
         html, body, form {
             font-size: 10.5px;
             line-height: 10.5px;
+            letter-spacing: -0.4px;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', "맑은 고딕", "Apple SD Gothic Neo", Helvetica, sans-serif;
+        }
+        form, ul {
+            margin: 0;
+            padding: 0;
         }
         #wrap {
             text-align: center;
@@ -214,6 +219,10 @@
                 </button>
             </div>
             <style>
+                /* (2-6)검색창 높이가 아주 약간 낮아진 거 같아서 추가 */
+                #search {
+                    margin-top: 6px;
+                }
                 #search > form {
                     display: inline-flex;
                     width: 708px;
@@ -337,9 +346,11 @@
                 </form>
             </div>
             <style>
+                #nav {
+                    margin-top: 12px;
+                }
                 #nav > ul {
                     display: flex;
-                    list-style-type: none;
                     justify-content: center;
                     font-size: 1.4rem;
                     line-height: 20px;
@@ -350,13 +361,88 @@
                 #nav a:visited {
                     color: black;
                 }
+                #nav a div {
+                    position: relative;
+                    /* 자식에 있는 absolute의 기준이 되게 함 */
+                }
+                #nav a div::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -2px;
+                    left: -3px;
+                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.d5b6c236.png);
+                    background-size: 433px 412px;
+                    background-position: 0px -128px;
+                    background-repeat: no-repeat;
+                    width: 54px;
+                    height: 54px;
+                    z-index: 0;
+                }
+                #nav a div::after {
+                    content: "";
+                    position: relative;
+                    /* z-index를 적용하기 위해 relative로 */
+                    display: inline-block;
+                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.d5b6c236.png);
+                    background-size: 433px 412px;
+                    background-repeat: no-repeat;
+                    width: 44px;
+                    height: 44px;
+                    z-index: 1;
+                    margin: 2px;
+                }
                 #nav li {
                     width: 64px;
                     margin-left: 4px;
+                    display: flex;
+                    justify-content: center;
                 }
                 #nav li:nth-of-type(1) {
                     /* 첫 list만 예외 */
                     margin-left: 0;
+                }
+                #nav li a span {
+                    display: inline-block;
+                    margin-top: 7px;
+                }
+                #nav li:nth-of-type(1) a div::after{
+                    background-position: -250px -90px;
+                }
+                #nav li:nth-of-type(2) a div::after{
+                    background-position: -250px 0px;
+                }
+                #nav li:nth-of-type(3) a div::after{
+                    background-position: -201px -98px;
+                }
+                #nav li:nth-of-type(4) a div::after{
+                    background-position: -90px -209px;
+                }
+                #nav li:nth-of-type(5) a div::after{
+                    background-position: 0px -209px;
+                }
+                #nav li:nth-of-type(6) a div::after{
+                    background-position: -180px -209px;
+                }
+                #nav li:nth-of-type(7) a div::after{
+                    background-position: -45px -209px;
+                }
+                #nav li:nth-of-type(8) a div::before {
+                    left: 0;
+                }
+                /* 8번째 list요소(지도)의 margin을 별도로 설정하지 않아도
+                자연스럽게 보여서 그냥 7px로 통일함 */
+                #nav li:nth-of-type(8) a div::after{
+                    background-position: -201px 0px;
+                    width: 48px;
+                    height: 48px;
+                    top: -2px;
+                }
+                #nav li:nth-of-type(9) a div::after{
+                    background-position: -225px -209px;
+                }
+                #nav li:nth-of-type(10) a div::after{
+                    background-position: -250px -135px;
                 }
             </style>
             <div id="nav">
