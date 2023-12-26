@@ -212,22 +212,22 @@
             </div>
             <style>
                 #search > form {
-                    display: inline-block;
+                    display: inline-flex;
                     width: 708px;
                     height: 60px;
                     border: 1px solid #03c75a;
                     border-radius: 33px;
                     text-align: left;
                 }
-
                 #search-svg {
-                    display: inline-block;
+                    display: inline-flex;
                     width: 68px;
                     height: 100%;
                     margin-right: 12px;
                     padding-left: 10px;
+                    justify-content: center;
+                    align-items: center;
                 }
-
                 #search-input {
                     width: 480px;
                     height: 100%;
@@ -236,18 +236,25 @@
                     font-weight: bold;
                     border: none;
                     outline: none;
-                }
-                
+                }           
                 #search-svg svg {
                     width: 24px;
                     height: 24px;
                     fill: #03c75a;
                 }
-
                 #search-right {
-                    display: inline-block;
+                    display: flex;
+                    flex: 1;
+                    align-items: stretch;
+                    justify-content: flex-end;
+                    /* 부모가 flex 일때 flex=1 : 늘어날 수 있는 범위 내에서 최대한 */
+                    /* flex의 비는 형제끼리의 비율과 같다 */
                 }
-
+                #search-keyboard,  #search-recent, #search-button {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
                 #search-keyboard::before,  #search-recent::before {
                     content: "";
                     display: block;
@@ -265,17 +272,10 @@
                     width: 10px;
                     height: 6px;
                 }
-
-                /* 업데이트 되어서 구현방식이 달라진거 같습니다 */
-                #search-button {
-                    width : 40px;
-                    height: 40px;
-                }
                 #search-button svg {
-                   width: 100%;
-                   height: 100%;
+                   width: 25px;
+                   height: 25px;
                 }
-                
             </style>
             <div id="search">
                 <form action="">
