@@ -8,6 +8,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>NAVER</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         #wrap {
             text-align: center;
         }
@@ -18,6 +22,12 @@
             /* inline과의 차이 : inline은 너비, 높이를 무시함 */
             background-color: yellowgreen;
         }
+        #header-hamberger {
+            margin-top: 18px;
+            background-color: green;
+            width: 46px;
+            height: 46px;
+        }
         #main {
             height: 2000px;
         }
@@ -26,7 +36,11 @@
 <body>
     <div id="wrap">
         <div id="wrap-center">
-            <div id="header"></div>
+            <div id="header">
+                <div id="header-hamburger">
+
+                </div>
+            </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
