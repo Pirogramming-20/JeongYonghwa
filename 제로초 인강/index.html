@@ -76,7 +76,7 @@
         * {
             box-sizing: border-box;
         }
-        html, body {
+        html, body, form {
             margin: 0;
             padding: 0;
         }
@@ -95,6 +95,8 @@
         #header {
             text-align: left;
             position: relative;
+            height: 64px;
+            /* 자식이 모두 absolute 위치를 사용하므로 부모의 height에 포함되지 않음 */
         }
 
         #header-hamburger, #header-naverpay, #header-notice {
@@ -201,14 +203,52 @@
                 </button>
                 <button id="header-naverpay">
                     <div></div>
-                    <span class="blind">확장 영역</span>
+                    <span class="blind">네이버 페이</span>
                 </button>
                 <button id="header-notice">
                     <div></div>
-                    <span class="blind">확장 영역</span>
+                    <span class="blind">알림</span>
                 </button>
             </div>
-            <div id="search"></div>
+            <style>
+                #search > form {
+                    display: inline-block;
+                    width: 708px;
+                    height: 60px;
+                    border: 1px solid #03c75a;
+                    border-radius: 33px;
+                    text-align: left;
+                }
+                #search > form > input {
+                    width: 480px;
+                    height: 100%;
+                    padding: 17px 0px;
+                    border: none;
+                    outline: none;
+                }
+                #search > form a {
+                    display: inline-block;
+                    width: 68px;
+                    height: 100%;
+                    padding: 17px;
+                    margin-right: 12px;
+                }
+                #search > form svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            </style>
+            <div id="search">
+                <form action="">
+                    <a href="#">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
+                    </a>
+                    <!-- label-input 연결 권장 -->
+                    <label for="search-input" class="blind"></label>
+                    <input id="search-input" type="text" />
+                    <button class="blind">검색</button>
+                </form>
+            </div>
             <div id="nav"></div>
             <div id="main"></div>
         </div>
