@@ -223,6 +223,7 @@
                     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
                 }
                 #search-svg {
+                    position: relative;
                     display: inline-flex;
                     width: 68px;
                     height: 100%;
@@ -230,6 +231,19 @@
                     padding-left: 10px;
                     justify-content: center;
                     align-items: center;
+                }
+                #search-svg::after {
+                    display: none;
+                }
+                #search > form:focus-within #search-svg::after {
+                    content: '';
+                    position: absolute;
+                    display: inline-block;
+                    right: 0;
+                    top: 20px;
+                    width: 1px;
+                    height: 20px;
+                    background-color: #e4e4e4;
                 }
                 #search-input {
                     width: 480px;
