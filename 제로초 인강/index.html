@@ -73,6 +73,9 @@
             --color_dic: #031f5f;
             --color_dic_rgb: 3,31,95;
         }
+        * {
+            box-sizing: border-box;
+        }
         html, body {
             margin: 0;
             padding: 0;
@@ -93,24 +96,18 @@
             text-align: left;
             position: relative;
         }
-        #header-hamburger {
+
+        #header-hamburger, #header-naverpay, #header-notice {
             position: absolute;
             top: 18px;
-            left: -10px;
             padding: 10px;
             display: inline-block;
             background: none;
             border: none;
             cursor: pointer;
-            
-            /* position-fixed = 스크롤해도 위치 고정 */
         }
-        /* 특정 상태에 있을때의 style을 기술 */
-        /* + Pseudo Element */
 
-        /* 문제 : hover시 스타일이 이미지 위로 와버림 -> z-index 조정*/
-        /* 주의 : z-index는 형제끼리만 적용, position: static에서 작동x */
-        #header-hamburger:hover::before {
+        #header-hamburger:hover::before, #header-naverpay:hover::before, #header-notice:hover::before {
             content: '';
             position: absolute;
             z-index: 0;
@@ -121,18 +118,50 @@
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
-        #header-hamburger > div {
+
+        #header-hamburger > div, #header-naverpay > div, #header-notice > div {
             position: relative;
             background-image: url(./sp_main.d5b6c236.png);
             background-repeat: no-repeat;
             /* 이미지 croping */
             background-size: 433px 412px;
-            /* 이미지 내 위치 */
-            background-position: -335px -81px;
-            
+            z-index: 1;
             width: 26px;
             height: 26px;
-            z-index: 1;
+        }
+
+        #header-hamburger {
+            left: -10px;
+            /* position-fixed = 스크롤해도 위치 고정 */
+        }
+        /* 특정 상태에 있을때의 style을 기술 */
+        /* + Pseudo Element */
+
+        /* 문제 : hover시 스타일이 이미지 위로 와버림 -> z-index 조정*/
+        /* 주의 : z-index는 형제끼리만 적용, position: static에서 작동x */
+        #header-hamburger > div {
+            /* 이미지 내 위치 */
+            background-position: -335px -81px;
+        }
+        #header-naverpay {
+            right: 42px;
+            width: 46px;
+            height: 46px;
+            padding: 7px;
+        }
+        #header-naverpay > div {
+            background-position: -295px -177px;
+            width: 32px;
+            height: 32px;
+        }
+        #header-notice {
+            right: -10px;
+            width: 46px;
+        }
+        #header-notice > div {
+            background-position: -335px -135px;
+            width: 26px;
+            height: 26px;
         }
         #main {
             height: 2000px;
@@ -145,6 +174,15 @@
             margin: -1px;
             overflow: hidden;
         }
+
+        /* 작업 주석
+        
+        12. 26일 기준 강의영상과 네이버 웹페이지 구성이 소폭 차이가 있어
+        버튼의 위치는 강의를 기준으로 하되, 버튼의 이미지는 현재 이미지를 사용하고
+        이미지가 변경됨에 따라 달라진 값 (width, height, padding 등)은 현재 값을 기준으로 적용했습니다.
+
+        */
+
     </style>
 </head>
 <body>
@@ -160,6 +198,14 @@
 
                     <!-- 위 셋이 형제를 이루는 구조 -->
                     <!-- z-index 설정은 형제간에만 적용 -->
+                </button>
+                <button id="header-naverpay">
+                    <div></div>
+                    <span class="blind">확장 영역</span>
+                </button>
+                <button id="header-notice">
+                    <div></div>
+                    <span class="blind">확장 영역</span>
                 </button>
             </div>
             <div id="search"></div>
