@@ -22,11 +22,24 @@
             /* inline과의 차이 : inline은 너비, 높이를 무시함 */
             background-color: yellowgreen;
         }
+        #header {
+            text-align: left;
+        }
         #header-hamburger {
             margin-top: 18px;
-            background-color: green;
-            width: 46px;
-            height: 46px;
+            padding: 10px;
+            display: inline-block;
+        }
+        #header-hamburger > div {
+            background-image: url(./sp_main.d5b6c236.png);
+            background-repeat: no-repeat;
+            /* 이미지 croping */
+            background-size: 433px 412px;
+            /* 이미지 내 위치 */
+            background-position: -335px -81px;
+            
+            width: 26px;
+            height: 26px;
         }
         #main {
             height: 2000px;
@@ -38,7 +51,7 @@
         <div id="wrap-center">
             <div id="header">
                 <div id="header-hamburger">
-
+                    <div></div>
                 </div>
             </div>
             <div id="search"></div>
