@@ -7,8 +7,30 @@
     <!-- 브라우저 상단에 뜨는 아이콘 = favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>NAVER</title>
+    <style>
+        #wrap {
+            text-align: center;
+        }
+        #wrap-center {
+            width: 1280px;
+            display: inline-block;
+            /* inline-block 처리하지 않으면 남은 부분을 마진으로 차지*/
+            /* inline과의 차이 : inline은 너비, 높이를 무시함 */
+            background-color: yellowgreen;
+        }
+        #main {
+            height: 2000px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="wrap">
+        <div id="wrap-center">
+            <div id="header"></div>
+            <div id="search"></div>
+            <div id="nav"></div>
+            <div id="main"></div>
+        </div>
+    </div>
 </body>
 </html>
