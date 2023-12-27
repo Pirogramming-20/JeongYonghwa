@@ -6,6 +6,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="github_favicon.png">
     <title>GitHub</title>
     <style>
+        .bold {
+            font-weight: bold;
+        }
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -13,10 +19,10 @@
         #center {
             text-align: center;
             background-color: #2d333b;
-            height: 700px;
+            height: 650px;
         }
         #center-wrap {
-            width: 1700px;
+            width: 1280px;
             display: inline-block;
             background-color: transparent;
             position: relative;
@@ -35,20 +41,117 @@
             align-items: center;
         }
         #header-left a {
-            padding: 6px;
+            padding: 7px;
             font-weight: bold;
             cursor: pointer;
         }
         #header-right {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: right;
+        }
+        #header-right > * {
+            margin-left: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #header-search-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 200px;
+            height: 40px;
+            background-color: rgba(230,230,230,0.2);
+            border-radius: 6px;
+        }
+        #header-search-box > input {
+            background-color: transparent;
+            border: none;
+            width: 150px;
+            margin-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        #header-search-box > input:focus {
+            outline: none;
+        }
+        #slash-box {
+            font-size: 13px;
+            background-color: transparent;
+            width: 20px;
+            height: 23px;
+            color: gray;
+            border: 1px solid gray;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        #header-sign-up {
+            color: white;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 4px;
+            padding: 8px 12px;
         }
         #github-logo {
             fill: white;
         }
+        .notice {
+            font-size: 0.7rem;
+        }
         #center-main {
+            display: inline-flex;
+            margin-top: 20px;
             height: 580px;
+        }
+        #introduction-wrap {
+            width: 620px;
+            height: 510px;
+            text-align: left;
+            padding-left: 60px;
+        }
+        #login-form {
+            display: inline-flex;
+            flex-flow: column;
+            text-align: left;
+            width: 450px;
+            height: 520px;
+            padding: 30 25 20 25;
+            background-color: white;
+            border-radius: 6px;
+        }
+        #login-form div {
+            margin-bottom: 8px;
+            color: gray;
+        }
+        #login-form input {
+            height: 50px;
+            margin-bottom: 18px;
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+        }
+        #login-sign-up {
+            height: 70px;
+            background-color: rgb(046,188,079);
+            border: 1px solid rgb(046,188,079);
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+        #introduction-main {
+            font-size: 62px;
+            font-weight: bold;
+            width: 360px;
+            color: white;
+            margin-top: 108px;
+            margin-bottom: 10px;
+        }
+        #introduction-detail {
+            font-size: 20px;
+            width: 462px;
+            color: rgb(170,170,170)
         }
         footer {
             position: absolute;
@@ -74,23 +177,29 @@
                         <a >Pricing</a>
                     </div>
                     <div id="header-right">
-                        <div><input placeholder="Search GitHub"></div>
-                        <a id="Sign-in">Sign in</a>
-                        <button id="Sign-up-button">Sign up</button>
+                        <div id="header-search-box">
+                            <input placeholder="Search GitHub">
+                            <div id="slash-box">/</div>
+                        </div>
+                        <a id="header-sign-in">Sign in</a>
+                        <button id="header-sign-up">Sign up</button>
                     </div>
                 </header>
                 <div id="center-main">
-                    <div id="introduction"></div>
+                    <div id="introduction-wrap">
+                        <div id="introduction-main">Built for developers</div>
+                        <div id="introduction-detail">GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside 50 million developers.</div>
+                    </div>
                     <div id="login-form">
                         <div class="bold">Username</div>
                         <input id="input-username" type="text"/>
                         <div class="bold">Email</div>
-                        <input id="username-input" type="text"/>
+                        <input id="input-email" type="text"/>
                         <div class="bold">Password</div>
-                        <input id="username-input" type="text"/>
-                        <div class="notice"></div>
-                        <button id="sign-up">Sign up for GitHub</button>
-                        <div class="notice"></div>
+                        <input id="input-password" type="text"/>
+                        <div class="notice">Make sure it's at least 15 characters Or at least 8 characters including a number and a lowercase letter. Learn more.</div>
+                        <button id="login-sign-up">Sign up for GitHub</button>
+                        <div class="notice">By clicking "Sign up for GitHub", you agree to our Terms of Service and Privacy Statement. We'll occasionally send you account related emails.</div>
                     </div>
                 </div>
                 <footer>
