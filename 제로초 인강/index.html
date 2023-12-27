@@ -431,7 +431,11 @@
                     left: 0;
                 }
                 /* 8번째 list요소(지도)의 margin을 별도로 설정하지 않아도
-                자연스럽게 보여서 그냥 7px로 통일함 */
+                자연스럽게 보여서 그냥 7px로 통일함 => 이후 부자연스럽게
+                뒤틀려서 다시 수정함(3-9강 시점)*/
+                #nav li:nth-of-type(8) a span {
+                    margin-top: 3px;
+                }
                 #nav li:nth-of-type(8) a div::after{
                     background-position: -201px 0px;
                     width: 48px;
@@ -860,7 +864,7 @@
                 .left-section footer .prev::before, .left-section footer .next::before {
                     content: "";
                     display: block;
-                    background-image: url(https://pm.pstatic.net/resources/asset/sp_main.d5b6c236.png);
+                    background-image: url(sp_main.d5b6c236.png);
                     background-size: 433px 412px;
                     background-position: -179px -400px;
                     background-repeat: no-repeat;
@@ -900,15 +904,45 @@
                     min-width: 176px;
                 }
                 #main-shopping-grid {
-                    margin-top: 20px;
+                    margin-top: 18px;
                     display: grid;
-                    grid-template-rows: 90px 95px 185px;
+                    grid-template-rows: 90px 95px 170px;
                     grid-template-columns: 1fr 1fr 1fr 1fr 250px;
                     column-gap: 20px;
                 }
+                #main-shopping-grid .item {
+                    line-height: 20px;
+                    letter-spacing: -.8px;
+                    font-size: 1.4rem;
+                }
+                #main-shopping-grid .item > .image {
+                    width: 115px;
+                    height: 115px;
+                    border-radius: 4px;
+                    background-color: gray;
+                    margin-bottom: 10px;
+                }
+                #main-shopping-grid .item > .text {
+                    text-align: left;
+                } 
+                /* 흔한 이름을 클래스명으로 사용할때, 혼란을 방지하기 위해 
+                아이디->클래스 순으로 특정해주는 것이 권장된다 */
                 .item:nth-child(1),  .item:nth-child(2),.item:nth-child(3),.item:nth-child(4) {
                     grid-row: 1 / span 2;
                     /* 1번부터 시작해서 2칸 차지 */
+                }
+                .item:nth-child(5), .item:nth-child(6), .item:nth-child(11) > div:first-child{
+                    padding: 10px 12px 5px;
+                    border: 1px solid rgba(0,0,0,.05);
+                    border-radius: 4px;
+                    background: rgba(245,248,251,.6);
+                }
+                .item:nth-child(6) {
+                    margin: 11px 0;
+                }
+                .item:nth-child(11) > div:first-child {
+                    margin-bottom: 10px;
+                    height: 135px;
                 }
             </style>
             <main id="main">
@@ -994,17 +1028,44 @@
                                 </div>
                             </div>
                             <div id="main-shopping-grid">
-                                <div class="item">1</div>
-                                <div class="item">2</div>
-                                <div class="item">3</div>
-                                <div class="item">4</div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
                                 <div class="item">5</div>
                                 <div class="item">6</div>
-                                <div class="item">7</div>
-                                <div class="item">8</div>
-                                <div class="item">9</div>
-                                <div class="item">10</div>
-                                <div class="item">11</div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div class="image"></div>
+                                    <div class="text">적당한 판촉 문구</div>
+                                </div>
+                                <div class="item">
+                                    <div></div>
+                                    <div>신규회원 10,000원 쿠폰</div>
+                                </div>
                             </div>
                         </div>
                         <footer>
