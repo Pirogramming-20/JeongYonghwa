@@ -6,26 +6,44 @@
     <link rel="shortcut icon" type="image/x-icon" href="github_favicon.png">
     <title>GitHub</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
         .bold {
             font-weight: bold;
+        }
+        .highlighted-link {
+            color: #4D97F5;
+            cursor: pointer;
+        }
+        .highlighted-text {
+            color: white;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-color: rgba(170,170,170,0.3);
+            text-decoration-thickness: 1px;
         }
         * {
             box-sizing: border-box;
         }
-        body {
+        html, body, button, input {
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
         #center {
             text-align: center;
             background-color: #2d333b;
-            height: 650px;
+            height: 660px;
         }
         #center-wrap {
-            width: 1280px;
+            width: 1360px;
             display: inline-block;
             background-color: transparent;
             position: relative;
+        }
+        #center-main {
+            display: inline-flex;
+            margin-top: 7px;
+            height: 580px;
         }
         #center-top {
             margin-top: 15px;
@@ -36,13 +54,20 @@
             height: 50px;
             color: white;
         }
+        .dropdown-svg {
+            fill: rgb(170,170,170);
+            width: 24px;
+            height: 24px;
+            margin-top: 4px;
+        }
         #header-left {
             display: inline-flex;
             align-items: center;
         }
         #header-left a {
+            display: inline-flex;
+            align-items: center;
             padding: 7px;
-            font-weight: bold;
             cursor: pointer;
         }
         #header-right {
@@ -52,14 +77,13 @@
         }
         #header-right > * {
             margin-left: 20px;
-            font-weight: bold;
             cursor: pointer;
         }
         #header-search-box {
             display: inline-flex;
             align-items: center;
             justify-content: space-between;
-            width: 200px;
+            width: 250px;
             height: 40px;
             background-color: rgba(230,230,230,0.2);
             border-radius: 6px;
@@ -75,33 +99,31 @@
         #header-search-box > input:focus {
             outline: none;
         }
+        #header-search-box > input::placeholder {
+            color : rgb(170,170,170);
+        }
         #slash-box {
-            font-size: 13px;
+            font-size: 11px;
             background-color: transparent;
-            width: 20px;
-            height: 23px;
+            width: 22px;
+            height: 24px;
             color: gray;
             border: 1px solid gray;
             border-radius: 4px;
             margin-right: 10px;
+            padding-top: 3px;
         }
         #header-sign-up {
             color: white;
             background-color: transparent;
             border: 1px solid white;
             border-radius: 4px;
-            padding: 8px 12px;
+            padding: 7px 11px;
+            font-size: 15px;
         }
         #github-logo {
             fill: white;
-        }
-        .notice {
-            font-size: 0.7rem;
-        }
-        #center-main {
-            display: inline-flex;
-            margin-top: 20px;
-            height: 580px;
+            margin-right: 7px;
         }
         #introduction-wrap {
             width: 620px;
@@ -114,20 +136,31 @@
             flex-flow: column;
             text-align: left;
             width: 450px;
-            height: 520px;
+            height: 530px;
             padding: 30 25 20 25;
             background-color: white;
             border-radius: 6px;
         }
         #login-form div {
             margin-bottom: 8px;
-            color: gray;
+            color: #2d333b;
+        }
+        .notice {
+            color: gray !important;
+            font-size: 11px; 
         }
         #login-form input {
             height: 50px;
             margin-bottom: 18px;
             border: 1px solid #e2e2e2;
             border-radius: 4px;
+        }
+        #login-form input:focus { 
+            outline: none;
+        }
+        /* Fake Placeholder을 사용함 */
+        #login-form input:not(:placeholder-shown) {
+            background-color: rgb(232,240,254);
         }
         #login-sign-up {
             height: 70px;
@@ -137,7 +170,7 @@
             color: white;
             font-size: 1rem;
             margin-top: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             cursor: pointer;
         }
         #introduction-main {
@@ -150,13 +183,17 @@
         }
         #introduction-detail {
             font-size: 20px;
-            width: 462px;
-            color: rgb(170,170,170)
+            width: 490px;
+            color: rgb(170,170,170);
         }
         footer {
-            position: absolute;
-            bottom: -250;
-            right: 0;
+            position: relative;
+            left: 420;
+            bottom: 40;
+        }
+        footer > img {
+            width: 528px;
+            height: 217px;
         }
     </style>
 </head>
@@ -169,12 +206,18 @@
                         <a id="github-logo" class="blind"><svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
                             <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
                         </svg></a>
-                        <a >Why GitHub?</a>
+                        <a >Why GitHub?<svg class="dropdown-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"/>
+                            </svg></a>
                         <a >Team</a>
                         <a >Enterprise</a>
-                        <a >Explore</a>
+                        <a >Explore<svg class="dropdown-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"/>
+                            </svg></a>
                         <a >Marketplace</a>
-                        <a >Pricing</a>
+                        <a >Pricing<svg class="dropdown-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z"/>
+                            </svg></a>
                     </div>
                     <div id="header-right">
                         <div id="header-search-box">
@@ -188,18 +231,18 @@
                 <div id="center-main">
                     <div id="introduction-wrap">
                         <div id="introduction-main">Built for developers</div>
-                        <div id="introduction-detail">GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside 50 million developers.</div>
+                        <div id="introduction-detail">GitHub is a development platform inspired by the way you work. From <span class="highlighted-text">open source</span> to <span class="highlighted-text">business</span>, you can host and review code, manage projects, and build software alongside 50 million developers.</div>
                     </div>
                     <div id="login-form">
                         <div class="bold">Username</div>
-                        <input id="input-username" type="text"/>
+                        <input id="input-username" type="text" placeholder=""/>
                         <div class="bold">Email</div>
-                        <input id="input-email" type="text"/>
+                        <input id="input-email" type="text" placeholder=""/>
                         <div class="bold">Password</div>
-                        <input id="input-password" type="text"/>
-                        <div class="notice">Make sure it's at least 15 characters Or at least 8 characters including a number and a lowercase letter. Learn more.</div>
+                        <input id="input-password" type="password" placeholder=""/>
+                        <div class="notice">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter. <a class="highlighted-link">Learn more</a>.</div>
                         <button id="login-sign-up">Sign up for GitHub</button>
-                        <div class="notice">By clicking "Sign up for GitHub", you agree to our Terms of Service and Privacy Statement. We'll occasionally send you account related emails.</div>
+                        <div class="notice">By clicking "Sign up for GitHub", you agree to our <a class="highlighted-link">Terms of Service</a> and <a class="highlighted-link">Privacy Statement</a>. We'll occasionally send you account related emails.</div>
                     </div>
                 </div>
                 <footer>
