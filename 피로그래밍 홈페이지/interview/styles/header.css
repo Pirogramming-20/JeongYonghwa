@@ -1,0 +1,45 @@
+#center-wrap {
+    display: flexbox;
+    padding: 0 var(--offset);
+    width: min(100%, 1200px);
+    margin: auto;
+}
+body {
+    background-color: black;
+    color: white;
+    font-size: 1.6rem;
+}
+
+header > h1 {
+    font-size: 0;
+}
+
+header > h1 > a > img {
+    transition: 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items : center;
+    height: 9rem;
+}
+
+.desktop-menu {
+    display: flex;
+    font-size: 1.8rem;
+    gap: var(--gutter);
+}
+
+.desktop-menu > li:hover {
+    color: var(--green);
+}
+
+@media screen and (max-width: 700px) {
+    .desktop-menu {
+        display: none;
+    }
+    header > h1 > a > img {
+        transform: scale(0.8);
+    }
+}

@@ -1,0 +1,20 @@
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 200px !important;
+        height: 300px;
+        background-color: gray;
+        position: fixed;
+        top: var(--header-height);
+        right: -200px;
+        transition: .3s;
+        z-index: 1;
+        padding: 20px 20px;
+        border-radius: 8px;
+    }
+    .sidebar > ul > li {
+        margin-bottom: 25px;
+    }
+    #hamburger-icon input:checked ~ .sidebar {
+        right: 0;
+    }
+}
