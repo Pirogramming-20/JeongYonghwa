@@ -31,19 +31,20 @@ function onButtonClick(event, items) {
     return;
   }
 
-  //   updateItems(items, key, value);
-  displayItems(items.filter((item) => item[key] === value));
+  // 일일이 html을 새로 삽입하지 않고 정보만 업데이트하는 방식
+  updateItems(items, key, value);
 }
 
-// function updateItems(items, key, value) {
-//   items.forEach((item) => {
-//     if (item[key] == value) {
-//       console.log(true);
-//     } else {
-//       console.log(false);
-//     }
-//   });
-// }
+function updateItems(items, key, value) {
+  const actualItems = document.getElementsByClassName("item");
+  for (let i = 0; i < items.length; i++) {
+    if (items[i][key] === value) {
+      actualItems[i].classList.remove("invisible");
+    } else {
+      actualItems[i].classList.add("invisible");
+    }
+  }
+}
 
 function setEventListeners(items) {
   const logo = document.querySelector(".logo");

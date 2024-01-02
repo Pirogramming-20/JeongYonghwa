@@ -27,10 +27,6 @@ body {
   height: 100vh;
 }
 
-.invisible {
-  display: none;
-}
-
 .logo {
   cursor: pointer;
   transition: transform var(--animation-duration) ease;
@@ -100,4 +96,8 @@ body {
 .item__description {
   margin-left: var(--base-space);
   font-size: var(--font-size);
+}
+
+.invisible {
+  display: none;
 }
