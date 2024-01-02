@@ -20,9 +20,41 @@ function createHTMLString(item) {
     `;
 }
 
+function onButtonClick(event, items) {
+  //앞서 정의한 data-key/value는
+  // event > target > dataset에 key / value로 저장
+  const dataset = event.target.dataset;
+  const key = dataset.key;
+  const value = dataset.value;
+
+  if (key == null || value == null) {
+    return;
+  }
+
+  //   updateItems(items, key, value);
+  displayItems(items.filter((item) => item[key] === value));
+}
+
+// function updateItems(items, key, value) {
+//   items.forEach((item) => {
+//     if (item[key] == value) {
+//       console.log(true);
+//     } else {
+//       console.log(false);
+//     }
+//   });
+// }
+
+function setEventListeners(items) {
+  const logo = document.querySelector(".logo");
+  const buttons = document.querySelector(".buttons");
+  logo.addEventListener("click", () => displayItems(items));
+  buttons.addEventListener("click", (event) => onButtonClick(event, items));
+}
+
 loadItems()
   .then((items) => {
     displayItems(items);
-    // setEventListeners(items);
+    setEventListeners(items);
   })
   .catch(console.log);

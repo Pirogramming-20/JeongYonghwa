@@ -27,6 +27,10 @@ body {
   height: 100vh;
 }
 
+.invisible {
+  display: none;
+}
+
 .logo {
   cursor: pointer;
   transition: transform var(--animation-duration) ease;
