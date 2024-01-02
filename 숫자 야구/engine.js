@@ -59,15 +59,23 @@ function createResultDiv(display, nums, strike, ball) {
 }
 
 function checkTotalResult(curTry, strikeCount) {
+    display.scrollTop = display.scrollHeight;
     if (strikeCount == 3) {
         const resultImage = document.getElementById('game-result-img');
         resultImage.setAttribute('src', './success.png');
-        console.log("Success!");
+        disableButton();
     } else if (!curTry) {
         const resultImage = document.getElementById('game-result-img');
         resultImage.setAttribute('src', './fail.png');
-        console.log("Fail!");
+        disableButton();
     }  
+}
+
+function disableButton() {
+    const submitBt = document.getElementsByClassName('submit-button');
+    submitBt[0].disabled = true;
+    submitBt[0].style.opacity = "0.5";
+    submitBt[0].style.cursor = "default";
 }
 
 function checkResult(ranNums, inputNums) {
@@ -87,15 +95,20 @@ function check_numbers() {
     let num1 = document.getElementById('number1');
     let num2 = document.getElementById('number2');
     let num3 = document.getElementById('number3');
-    if (num1.value==''||num2.value==''||num3.value=='') {
+    const clearAll = () => {
         num1.value = '';
         num2.value = '';
         num3.value = '';
-        return;
-    }
+    } 
+    if (num1.value==''||num2.value==''||num3.value=='') {
+        return clearAll();
+    } else if (num1.value==num2.value||num2.value==num3.value||num3.value==num1.value) {
+        return clearAll();
+    } // 중복된 숫자 입력 방지
     let inputNums = [num1.value,num2.value,num3.value];
     let result = checkResult(numbers, inputNums);
     let numToStr = inputNums.join(' ');
+    clearAll();
     return createResultDiv(display, numToStr, result.strike, result.ball);
 }
 
