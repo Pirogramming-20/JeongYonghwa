@@ -11,3 +11,30 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.btn:hover,
+.logo:hover {
+  transform: scale(1.1);
+}
