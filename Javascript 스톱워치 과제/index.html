@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="engine.js" defer></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        button:hover,
+        a:hover,
+        input:hover {
+            cursor: pointer;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            font-family: "IBM Plex Sans KR", sans-serif;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #mainDisplay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 25px;
+            background-color: red;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+            margin-bottom: 10px;
+        }
+
+        #currentTime {
+            background-color: white;
+            border-radius: 15px;
+            width: 300px;
+            height: 120px;
+            margin: 20px 20px;
+            text-align: center;
+            font-size: 100px;
+            line-height: 120px;
+        }
+
+        .buttonDiv {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .buttonDiv>* {
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            background-color: pink;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        #record {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            gap: 5px;
+        }
+
+        #recordHeader {
+            display: flex;
+            align-items: center;
+            background-color: #e2e2e2;
+            gap: 50px;
+            border-top-right-radius: 6px;
+            border-top-left-radius: 6px;
+        }
+
+        #recordHeader>* {
+            margin: 6px 10px;
+        }
+
+        #delete {
+            font-size: 20px;
+        }
+
+        #delete:hover {
+            color: red;
+        }
+
+        #selectAll,
+        .selectItem {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px dashed black;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        #selectAll:checked,
+        .selectItem:checked {
+            background-color: black;
+        }
+
+        .recordContainer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .recordContainer>input {
+            margin-right: 85px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><i class="ri-time-fill"></i> 피로그래밍 스톱워치</h1>
+    <div id="mainDisplay">
+        <div id="currentTime">00:00</div>
+        <div class="buttonDiv">
+            <button id="startBtn">start</button>
+            <button id="stopBtn">stop</button>
+            <button id="resetBtn">reset</button>
+        </div>
+    </div>
+    <div id="record">
+        <div id="recordHeader">
+            <input type="checkbox" id="selectAll">
+            <span>구간 기록</span>
+            <a id="delete"><i class="ri-delete-bin-6-fill"></i></a>
+        </div>
+        <div id="recordBox">
+            <!-- <div class="recordContainer">
+                <input type="checkbox" class="selectItem">
+                <span>03:50</span>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
