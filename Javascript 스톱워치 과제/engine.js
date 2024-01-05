@@ -5,6 +5,8 @@ const resetBtn = document.getElementById("resetBtn");
 const recordBox = document.getElementById("recordBox");
 const deleteBtn = document.getElementById("delete");
 const selectAllBtn = document.getElementById("selectAll");
+const saveBtn = document.getElementById("save");
+const loadBtn = document.getElementById("load");
 
 let sec = 0;
 let millSec = 0;
@@ -59,6 +61,25 @@ function addRecord() {
 
   recordBox.appendChild(recordContainer);
 }
+
+function saveData() {
+  const data = document.getElementById('recordBox').innerHTML;
+  localStorage.setItem('saveData', data)
+}
+
+function loadData() {
+  const data = localStorage.getItem('saveData')
+  const recordBox = document.getElementById('recordBox');
+  recordBox.innerHTML = data;
+}
+
+saveBtn.addEventListener("click", () => {
+  saveData();
+});
+
+loadBtn.addEventListener("click", () => {
+  loadData();
+});
 
 startBtn.addEventListener("click", () => {
   // 중복 클릭으로 인해 counter가 여러 개 생기는 것을 방지

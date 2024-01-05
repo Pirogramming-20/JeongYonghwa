@@ -89,15 +89,20 @@
             border-top-left-radius: 6px;
         }
 
-        #recordHeader>* {
+        #recordHeader> input{
             margin: 6px 10px;
         }
 
-        #delete {
-            font-size: 20px;
+        #recordHeader> span{
+            margin-left: 18px;
         }
 
-        #delete:hover {
+        #recordHeader > div {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        #recordHeader > div > *:hover {
             color: red;
         }
 
@@ -143,7 +148,11 @@
         <div id="recordHeader">
             <input type="checkbox" id="selectAll">
             <span>구간 기록</span>
-            <a id="delete"><i class="ri-delete-bin-6-fill"></i></a>
+            <div>
+                <a id="load"><i class="ri-restart-line"></i></a>
+                <a id="save"><i class="ri-save-3-fill"></i></a>
+                <a id="delete"><i class="ri-delete-bin-6-fill"></i></a>
+            </div>
         </div>
         <div id="recordBox">
             <!-- <div class="recordContainer">
