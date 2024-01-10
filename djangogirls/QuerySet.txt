@@ -1,0 +1,29 @@
+- 인터랙티브 콘솔 진입
+python manage.py shell
+
+- 모델의 class를 import => DB로는 한 개의 릴레이션에 해당?
+from blog.models import Post
+
+- 모델 내 특정 class 내 object를 조회
+Post.objects.all() / Attr을 객체 단위로 관리...?
+
+- 사용자 객체를 관리하는 class => User
+from django.contrib.auth.models import User
+
+- 객체 조회, 인스턴스 가져오기
+User.objects.all()
+me = User.objects.get(username='ola')
+
+- 모델에 새로운 객체(DB 상으로는 Record) 추가
+Post.objects.create(author=me, title='Sample title', text='Test')
+
+- DB의 select = Query set의 objects.filter(조건)
+조건 표기 : 
+필드이름__contains =  내용 
+ex. title__contains = 'title'
+ex. published_date__lte=timezone.now()
+참고 - lte = less than or equal to
+
+- 정렬 : order_by(조건) ex. created_data
+
+- 메서드 체이닝도 지원
