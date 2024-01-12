@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'review/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'review/css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{% url 'review_list'%}"id="header-logo">Piro<span class="color-red">Movie</span>Review</a>
+            <a href="{% url 'review_create'%}" title="리뷰 작성하기">
+                <i class="ri-sticky-note-add-line"></i>
+            </a>
+        </header>
+    </div>
+    {% block content%}
+    {% endblock %}
+</body>
+</html>

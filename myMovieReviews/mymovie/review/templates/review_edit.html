@@ -1,0 +1,13 @@
+{% extends "review_base.html" %}
+
+{% block content %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="review-edit-container container">
+            <h1>New Review</h1>
+            {{form.as_p}}
+            <button type="submit">Save</button>
+        </div> 
+    </form>
+{% endblock content %}

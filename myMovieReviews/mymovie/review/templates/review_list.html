@@ -1,0 +1,23 @@
+{% extends "review_base.html" %}
+
+{% block content %}
+    <div class="select-criteria">
+        <a href="{% url 'review_order' criteria='release_date' %}">개봉년도 순</a> 
+        <a href="{% url 'review_order' criteria='score' %}">별점 순</a> 
+        <a href="{% url 'review_order' criteria='showtime' %}">러닝타임 순</a>
+    </div>
+    <div class="review-container container">
+        {% for review in reviews %}
+            <div class="review-box">
+                <h1><a href="{% url 'review_detail' pk=review.pk %}">{{review.title}}</a></h1>
+                <span>개봉년도 : {{review.release_date}}</span>
+                <br/>
+                <span>장르 : {{review.genre}}</span>
+                <br/>
+                <span>별점 : {{review.score}}</span>
+                <br/>
+                <span>러닝타임 : {{review.showtime}}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

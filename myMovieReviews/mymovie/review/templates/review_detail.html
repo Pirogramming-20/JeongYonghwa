@@ -1,0 +1,26 @@
+{% extends "review_base.html" %}
+
+{% block content %}
+    <div class="review-detail-header container">
+        <h1>{{review.title}}</h1>
+        <div>
+            <a class="detail-icon" href="{% url 'review_update' pk=review.pk %}"><i class="ri-swap-2-fill"></i></a>
+            <form action="{% url 'review_delete' pk=review.pk %}" method="POST">
+                {% csrf_token %}
+                <button class="detail-icon" type='submit'><i class="ri-delete-bin-7-fill"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="review-detail-body container">
+        <span><strong>개봉년도: </strong> {{review.release_date}}</span>
+        <span><strong>감독: </strong> {{review.director}}</span>
+        <span><strong>출연: </strong> {{review.cast}}</span>
+        <span><strong>장르: </strong> {{review.genre}}</span>
+        <span><strong>별점: </strong> {{review.score}}</span>
+        <span><strong>러닝타임: </strong> {{review.showtime}}</span>
+        <span></span>
+    </div>
+    <p class="review-detail-content container">
+        {{review.content}}
+    </p>
+{% endblock %}
