@@ -14,5 +14,6 @@ class ReviewForm(forms.ModelForm):
             'showtime' : '러닝타임',
             'content' : '리뷰\n',
             'director' : '감독',
-            'cast': '출연'
+            'cast': '출연',
+            'image': '이미지',
         }

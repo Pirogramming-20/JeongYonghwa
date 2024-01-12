@@ -12,13 +12,19 @@
         </div>
     </div>
     <div class="review-detail-body container">
-        <span><strong>개봉년도: </strong> {{review.release_date}}</span>
-        <span><strong>감독: </strong> {{review.director}}</span>
-        <span><strong>출연: </strong> {{review.cast}}</span>
-        <span><strong>장르: </strong> {{review.genre}}</span>
-        <span><strong>별점: </strong> {{review.score}}</span>
-        <span><strong>러닝타임: </strong> {{review.showtime}}</span>
-        <span></span>
+        <div class="review-detail-image">
+            {% if review.image %}
+                <img src="{{review.image.url}}">
+            {% endif %}
+        </div>
+        <div>
+            <span><strong>개봉년도: </strong> {{review.release_date}}</span>
+            <span><strong>감독: </strong> {{review.director}}</span>
+            <span><strong>출연: </strong> {{review.cast}}</span>
+            <span><strong>장르: </strong> {{review.genre}}</span>
+            <span><strong>별점: </strong> {{review.score}}</span>
+            <span><strong>러닝타임: </strong> {{review.showtime}}</span>
+        </div>
     </div>
     <p class="review-detail-content container">
         {{review.content}}

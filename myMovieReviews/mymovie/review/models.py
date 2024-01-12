@@ -38,3 +38,4 @@ class Review(models.Model):
     content = models.TextField()
     director = models.CharField(max_length = 16)
     cast = models.CharField(max_length = 50)
+    image = models.ImageField(upload_to='images/', null=True)

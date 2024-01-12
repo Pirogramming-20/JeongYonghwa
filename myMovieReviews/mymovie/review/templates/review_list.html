@@ -9,6 +9,11 @@
     <div class="review-container container">
         {% for review in reviews %}
             <div class="review-box">
+                <div class="review-detail-image review-list-image">
+                    {% if review.image %}
+                        <img src="{{review.image.url}}">
+                    {% endif %}
+                </div>
                 <h1><a href="{% url 'review_detail' pk=review.pk %}">{{review.title}}</a></h1>
                 <span>개봉년도 : {{review.release_date}}</span>
                 <br/>

@@ -25,7 +25,7 @@ def review_detail(request, pk):
 def review_new(request):
     # Page에 처음 접속했을 때(get), 제출할 때(post)
     if request.method == "POST":
-        form = ReviewForm(request.POST)
+        form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('review_list')
@@ -39,7 +39,7 @@ def review_new(request):
 def review_update(request, pk):
     review = get_object_or_404(Review, pk=pk)
     if request.method == "POST":
-        form = ReviewForm(request.POST, instance=review)
+        form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             review = form.save()
             return redirect('review_detail', pk=review.pk)
