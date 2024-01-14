@@ -8,13 +8,12 @@
             //         document.querySelector('article').innerHTML = text;
             //     })
             // })
-            
-            function callbackme(){
-                console.log('response end');
-            }
-            fetch('html').then(callbackme);
-            console.log(1);
-            console.log(2);
+
+            fetch('Java').then(function(response){
+                if(response.status == '404'){
+                    alert('Not found')
+                }
+            });
             ">
     </body>
     <article>
