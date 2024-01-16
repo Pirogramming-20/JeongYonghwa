@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='idea-container'>
+{% for idea in ideas %}
+    <div class='idea-box'>
+        {% if idea.marked %}
+        <span id='mark_{{idea.pk}}' class='interest-mark marked' onclick="changeMarked({{idea.pk}})">❤️</span>
+        {% else %}
+        <span id='mark_{{idea.pk}}' class='interest-mark' onclick="changeMarked({{idea.pk}})">🤍</span>
+        {% endif %}
+        <div class='image-border'>
+            {% if idea.image %}
+            <img src="{{idea.image.url}}" alt="아이디어 이미지">
+            {% endif %}
+        </div>
+        <a href="{%url 'idea:detail' pk=idea.pk %}">{{idea.name}}</a>
+        <div class='info-box'>
+            <div>기술스택 : {{idea.devtool}}</div>
+            <div>관심도 : {{idea.interest}}</div>
+        </div>
+    </div>
+{% endfor %}
+</div>  
+{% endblock %}

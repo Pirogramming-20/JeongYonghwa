@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/reset.css'%}">
+    <link rel="stylesheet" href="{%static 'css/idea.css'%}">
+    <script src="{%static 'js/main.js'%}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class='center_container'>
+        <header>
+            <a id="main-logo" href="{%url 'idea:main_page'%}">My<strong>Idea</strong>Storage</a>
+            <div class="nav-bar">
+                <a href="{%url 'idea:create'%}">아이디어 등록</a>
+                <a href="{%url 'idea:main_page'%}">아이디어 관리</a>
+                <a href="{%url 'devtool:create'%}">개발툴 등록</a>
+                <a href="{%url 'devtool:list'%}">개발툴 관리</a>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

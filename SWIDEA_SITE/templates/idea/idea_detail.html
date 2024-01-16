@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{idea}}
+    <form action="{%url 'idea:delete' pk=idea.pk%}" method="post">
+        {% csrf_token %}
+        <button>삭제하기</button>
+    </form>
+    <a href="{%url 'idea:update' pk=idea.pk%}">수정하기</a>
+{% endblock %}

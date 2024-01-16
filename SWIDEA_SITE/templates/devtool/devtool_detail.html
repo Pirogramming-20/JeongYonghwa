@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>{{tool.name}}</div>
+    <div>{{tool.tool_type}}</div>
+    <div>{{tool.explanation}}</div>
+    
+    {% for idea in ideas %}
+        <a href="{%url 'idea:detail' pk=idea.pk%}">{{idea.name}}</a>
+    {% endfor %}
+    <a href="{%url 'devtool:list'%}">전체 목록</a>
+    <form method="post" action="{%url 'devtool:update' pk=pk %}">
+        {% csrf_token %}
+        <button>수정</button>
+    </form>
+    <form method="post" action="{%url 'devtool:delete' pk=pk %}">
+        {% csrf_token %}
+        <button>삭제</button>
+    </form>
+{% endblock %}
