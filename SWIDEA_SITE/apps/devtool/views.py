@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from .forms import *
 from .models import *
 
@@ -49,3 +50,14 @@ def update(request, pk):
         'pk':pk,
     }
     return render(request, 'devtool/devtool_update.html', context)
+
+def search(request, query):
+    if query == '__all':
+        tools = Devtool.objects.all()
+    else:
+        tools = Devtool.objects.filter(name__contains = query)
+    context = {
+        'tools':tools
+    }
+    html = render(request, 'devtool/search_result.html', context).content
+    return JsonResponse({'result':html.decode('utf-8')})

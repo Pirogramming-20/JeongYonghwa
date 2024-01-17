@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{idea}}
-    <form action="{%url 'idea:delete' pk=idea.pk%}" method="post">
-        {% csrf_token %}
-        <button>삭제하기</button>
-    </form>
-    <a href="{%url 'idea:update' pk=idea.pk%}">수정하기</a>
+<div class='detail-container'>
+    <div id='idea-detail-innerwrap'>
+    {% if idea.marked %}
+    <span id='mark_{{idea.pk}}' class='interest-mark marked' onclick="changeMarked({{idea.pk}})">❤️</span>
+    {% else %}
+    <span id='mark_{{idea.pk}}' class='interest-mark' onclick="changeMarked({{idea.pk}})">🤍</span>
+    {% endif %}
+    <div class='image-border'>
+        {% if idea.image %}
+        <img src="{{idea.image.url}}" alt="아이디어 이미지">
+        {% endif %}
+    </div>
+    <div id='detail-infobox'>
+        <div>
+            <div><strong>아이디어 이름 : </strong> {{idea.name}}</div>
+            <p><strong>아이디어 설명 : </strong> {{idea.content}}</p>
+            <div><strong>현재 관심도 : </strong> {{idea.interest}} </div>
+            <div><strong>사용할 개발툴 : </strong> <a href="{%url 'devtool:detail' pk=idea.devtool.pk%}">{{idea.devtool}}</a></div>
+        </div>
+        <div class='button-box'>
+            <a class='button-theme' href="{%url 'idea:main_page'%}">목록보기</a>
+            <form action="{%url 'idea:delete' pk=idea.pk%}" method="post">
+                {% csrf_token %}
+                <button class='button-theme'>삭제하기</button>
+            </form>
+            <a class='button-theme' href="{%url 'idea:update' pk=idea.pk%}">수정하기</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

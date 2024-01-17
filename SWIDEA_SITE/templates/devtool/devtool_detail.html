@@ -1,20 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>{{tool.name}}</div>
-    <div>{{tool.tool_type}}</div>
-    <div>{{tool.explanation}}</div>
-    
+<div class='detail-container'>
+    <div class='detail-inner-container'>
+    <div id='devtool-name'>{{tool.name}}</div>
+    <div><strong>종류 : </strong>{{tool.kind}}</div>
+    <p><strong>설명 : </strong>{{tool.content}}</p>
+    <div id='devtool-related-idea'>관련 아이디어 바로가기</div>
+    <div class='related-ideas'>
     {% for idea in ideas %}
-        <a href="{%url 'idea:detail' pk=idea.pk%}">{{idea.name}}</a>
+        <a href="{%url 'idea:detail' pk=idea.pk%}">#{{idea.name}}</a>
     {% endfor %}
-    <a href="{%url 'devtool:list'%}">전체 목록</a>
-    <form method="post" action="{%url 'devtool:update' pk=pk %}">
-        {% csrf_token %}
-        <button>수정</button>
-    </form>
-    <form method="post" action="{%url 'devtool:delete' pk=pk %}">
-        {% csrf_token %}
-        <button>삭제</button>
-    </form>
+    </div>
+    </div>
+    <div class='button-box'>
+        <a class='button-theme' href="{%url 'devtool:list'%}">목록보기</a>
+        <form method="post" action="{%url 'devtool:update' pk=pk %}">
+            {% csrf_token %}
+            <button class='button-theme'>수정하기</button>
+        </form>
+        <form method="post" action="{%url 'devtool:delete' pk=pk %}">
+            {% csrf_token %}
+            <button class='button-theme'>삭제하기</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
