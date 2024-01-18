@@ -323,7 +323,31 @@ header {
 }
 
 #idea-paginate {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#criteria-div {
+    position: absolute;
+    right: 0;
+    bottom: 1;
+}
+
+.form-theme {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #e2e2e2;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.form-theme > button {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    bottom: -30;
 }

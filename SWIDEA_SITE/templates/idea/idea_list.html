@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<label for="criteria">정렬 기준:</label>
-<select id="criteria">
-    <option value="">------</option>
-    <option value="-marked">찜하기순</option>
-    <option value="name">이름순</option>
-    <option value="id">등록순</option>
-    <option value="-id">최신순</option>
-    <option value="-interest">관심도순</option>
-</select>
 <div id='idea-paginate'>
+<div id="criteria-div">
+    <label for="criteria">정렬 기준:</label>
+    <select id="criteria">
+        <option value="">------</option>
+        <option value="-marked">찜하기순</option>
+        <option value="name">이름순</option>
+        <option value="id">등록순</option>
+        <option value="-id">최신순</option>
+        <option value="-interest">관심도순</option>
+    </select>
+</div>
     <div class='idea-container'>
     {% for idea in page_obj %}
         <div class='idea-box'>

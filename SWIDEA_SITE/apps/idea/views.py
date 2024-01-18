@@ -6,7 +6,7 @@ from .forms import *
 
 def show_list(request):
     ideas = Idea.objects.all()
-    paginator = Paginator(ideas, 2)
+    paginator = Paginator(ideas, 4)
     page = request.GET.get('page')
     if not page or int(page) < 1:
         page = 1
@@ -66,7 +66,7 @@ def change_marked(request, pk):
 
 def change_order(request, criterion):
     ideas = Idea.objects.order_by(criterion)
-    paginator = Paginator(ideas, 2)
+    paginator = Paginator(ideas, 4)
     page = request.GET.get('page')
     if not page or int(page) < 1:
         page = 1

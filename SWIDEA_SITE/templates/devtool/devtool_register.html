@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="{%url 'devtool:create'%}" method='post'>
+    <form class='form-theme' action="{%url 'devtool:create'%}" method='post'>
         {% csrf_token %}
         {{form.as_p}}
         <button>등록하기</button>
