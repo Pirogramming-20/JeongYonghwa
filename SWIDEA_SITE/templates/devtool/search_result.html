@@ -1,0 +1,7 @@
+{% for tool in tools %}
+<div class='devtool-inner-container'>
+    <a href="{%url 'devtool:detail' pk=tool.pk%}">{{tool.name}}</a>
+    <div>{{tool.kind}}</div>
+    <div>{{tool.content}}</div>
+</div>
+{% endfor %}

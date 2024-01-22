@@ -1,25 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class='idea-container'>
-{% for idea in ideas %}
-    <div class='idea-box'>
-        {% if idea.marked %}
-        <span id='mark_{{idea.pk}}' class='interest-mark marked' onclick="changeMarked({{idea.pk}})">❤️</span>
-        {% else %}
-        <span id='mark_{{idea.pk}}' class='interest-mark' onclick="changeMarked({{idea.pk}})">🤍</span>
-        {% endif %}
-        <div class='image-border'>
-            {% if idea.image %}
-            <img src="{{idea.image.url}}" alt="아이디어 이미지">
+<div id='idea-paginate'>
+<div id="criteria-div">
+    <label for="criteria">정렬 기준:</label>
+    <select id="criteria">
+        <option value="">------</option>
+        <option value="-marked">찜하기순</option>
+        <option value="name">이름순</option>
+        <option value="id">등록순</option>
+        <option value="-id">최신순</option>
+        <option value="-interest">관심도순</option>
+    </select>
+</div>
+    <div class='idea-container'>
+    {% for idea in page_obj %}
+        <div class='idea-box'>
+            {% if idea.marked %}
+            <span id='mark_{{idea.pk}}' class='interest-mark marked' onclick='changeMarked({{idea.pk}})'>❤️</span>
+            {% else %}
+            <span id='mark_{{idea.pk}}' class='interest-mark' onclick='changeMarked({{idea.pk}})'>🤍</span>
             {% endif %}
+            <div class='image-border'>
+                {% if idea.image %}
+                <img src="{{idea.image.url}}" alt="아이디어 이미지">
+                {% endif %}
+            </div>
+            <a href="{%url 'idea:detail' pk=idea.pk %}">{{idea.name}}</a>
+            <div class='info-box'>
+                <div>기술스택 : {{idea.devtool}}</div>
+                <div>
+                    관심도 : 
+                    <button class='interest-btn' id='interest-minus_{{idea.pk}}' onclick='decreaseInterest({{idea.pk}})'><i class="ri-subtract-fill"></i></button>
+                        <span id='interest_{{idea.pk}}'>{{idea.interest}}</span>
+                    <button class='interest-btn' id='interest-plus_{{idea.pk}}' onclick='increaseInterest({{idea.pk}})'><i class="ri-add-line"></i></button>
+                </div>
+            </div>
         </div>
-        <a href="{%url 'idea:detail' pk=idea.pk %}">{{idea.name}}</a>
-        <div class='info-box'>
-            <div>기술스택 : {{idea.devtool}}</div>
-            <div>관심도 : {{idea.interest}}</div>
-        </div>
+    {% endfor %}
     </div>
-{% endfor %}
-</div>  
+    <ul class="page-list">
+    {% if page_obj.has_previous %}
+        <li><a href="?page={{page_obj.previous_page_number}}"><i class="ri-arrow-left-s-line"></i></a></li>
+    {% else %}
+        <li><a href="?page={{page_obj.number}}"><i class="ri-arrow-left-s-line"></i></a></li>
+    {% endif %}
+    {% for page in paginator.page_range %}
+        {% if page == page_obj.number %}
+        <li><a class='cur-page' href="?page={{page}}">{{page}}</a></li>
+        {% else %}
+        <li><a href="?page={{page}}">{{page}}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li><a href="?page={{page_obj.next_page_number}}"><i class="ri-arrow-right-s-line"></i></a></li>
+    {% else %}
+        <li><a href="?page={{page_obj.number}}"><i class="ri-arrow-right-s-line"></i></a></li>
+    {% endif %}
+    </ul>
+</div>
 {% endblock %}

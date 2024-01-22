@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>DevTool List</div>
-{% for tool in tools %}
-    <a href="{%url 'devtool:detail' pk=tool.pk%}">{{tool.name}}</a>
-{% endfor %}
+<div id='devtool-list-head'>DevTool List</div>
+<div class='search-box'><input id='devtool-search' placeholder="키워드로 검색해보세요!" type="text"></div>
+<div class='devtool-outter-container'>
+    {% for tool in tools %}
+    <div class='devtool-inner-container'>
+        <a href="{%url 'devtool:detail' pk=tool.pk%}">{{tool.name}}</a>
+        <div>{{tool.kind}}</div>
+        <div>{{tool.content}}</div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

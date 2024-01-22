@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&display=swap');
+
 a {
     text-decoration: none;
     color: inherit;
@@ -10,6 +12,15 @@ strong {
 body {
     display: flex;
     justify-content: center;
+    font-family: 'Orbit', sans-serif;
+}
+
+button {
+    font-family: 'Orbit', sans-serif;
+}
+
+input {
+    font-family: 'Orbit', sans-serif;
 }
 
 .center_container {
@@ -27,6 +38,34 @@ header {
     margin: 50px 0;
 }
 
+.button-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.button-theme {
+    border: none;
+    font-size: 14px;
+    background-color: bisque;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-box > a {
+    line-height: 30px;
+    text-align: center;
+}
+
+.button-theme:hover {
+    box-shadow: 2px 2px 5px gray;
+}
+
 #main-logo {
     font-size: 32px;
     color: darkolivegreen;
@@ -39,6 +78,10 @@ header {
 .nav-bar > a {
     margin: 0 10px;
     font-weight: bold;
+}
+
+.nav-bar > a:hover {
+    color: darkgray;
 }
 
 .idea-container {
@@ -93,4 +136,218 @@ header {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+.detail-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    border: 2px solid burlywood;
+    border-radius: 6px;
+    padding: 25px 10px;
+}
+
+.detail-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    gap: 20px;
+}
+
+.detail-inner-container > p {
+    line-height: 24px;
+}
+
+.related-ideas {
+    display: flex;
+    font-size: 20px;
+    color: darkgreen;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.detail-container > p {
+    width: 190px;
+    line-height: 30px;
+}
+
+#idea-detail-innerwrap {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+}
+
+#devtool-name {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid darkgray;
+}
+
+#devtool-related-idea {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 0;
+    border-bottom: 2px solid darkgray;
+}
+
+#devtool-list-head {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.devtool-outter-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.devtool-inner-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    padding-left: 20px;
+    background-color: #e2e2e2;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px darkgray;
+}
+
+.devtool-inner-container > a:nth-of-type(1){
+    width: 15%;
+    font-size: 20px;
+}
+
+.devtool-inner-container > a:nth-of-type(1):hover{
+    color: darkgray;
+}
+
+.devtool-inner-container > div:nth-of-type(1){
+    width: 20%;
+    font-weight: bold;
+}
+
+.devtool-inner-container > div:nth-of-type(2){
+    width: 65%;
+}
+
+.interest-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    background-color: powderblue;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.info-box > div:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#detail-infobox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 20px;
+    padding-top: 20px;
+    width: 60%;
+}
+
+#detail-infobox > .button-box {
+    margin-top: 20px;
+}
+
+#detail-infobox > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#detail-infobox > div:nth-of-type(1) > p {
+    line-height: 24px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    height: 30px;
+    border: 2px solid #e2e2e2;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+#devtool-search {
+    width: 90%;
+    border: none;
+    outline: none;
+}
+
+#devtool-search::placeholder {
+    color: darkgray;
+}
+
+#devtool-search:focus::placeholder {
+    color: transparent;
+}
+
+/* page 관련 */
+
+.page-list {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    color: darkgray;
+}
+
+.cur-page {
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+#idea-paginate {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#criteria-div {
+    position: absolute;
+    right: 0;
+    bottom: 1;
+}
+
+.form-theme {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #e2e2e2;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.form-theme > button {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    bottom: -30;
 }
