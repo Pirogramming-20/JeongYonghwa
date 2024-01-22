@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script src="{% static 'main.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <sidebar>
+        <a href="#"><i class="ri-home-7-fill"></i> Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'user:user_logout' %}"><i class="ri-logout-box-fill"></i> Logout</a>
+        <a href="{%url 'post:create_post' %}"><i class="ri-sticky-note-add-fill"></i> New Post</a>
+    {% else %}
+        <a href="{% url 'user:user_login' %}"><i class="ri-login-box-fill"></i> Login</a>
+        <a href="{% url 'user:signup' %}"><i class="ri-file-paper-2-fill"></i> Sign Up</a>
+    {% endif %}
+    </sidebar>
+    <div class='center-container'>
+        <div class='bolder'>All Posts</div>
+        <div class='inner-container'>
+        {% for post in posts %}
+        <div>
+            <div class='post-main'>
+                <p class='post-title'>{{ post.title }}</p>
+                <p class='post-content'>{{ post.content }}</p>
+                <div class='like-box'>
+                    <div class='like-icon' id='like_icon_{{post.pk}}' onclick="onClickLike({{post.pk}}, {{user.pk}})">
+                        {% if user in post.likes.all %}❤️{% else %}🤍{% endif %}
+                    </div>
+                    <span class='post-like' id="like_count_{{post.pk}}">좋아요: {{ post.like_count }}개</span>
+                </div>
+            </div>
+
+            <div class='comment-container' id='comment_container_{{post.pk}}'>
+            {% for comment in post.comment_set.all %}
+                <p><span class='user-name'>{{ comment.author.username }}</span> : {{ comment.content }} 
+                    {% if user == comment.author %}<i class="ri-close-circle-fill" onclick="onClickDelete({{comment.pk}}, {{post.pk}})"></i>{% endif %}</p>
+            {% endfor %}
+            </div>
+            
+            <div id='comment-submit'>
+                <input type="text" id='comment_input_{{post.pk}}' placeholder="댓글을 작성해보세요!"/>
+                <div id='comment_submit_{{post.pk}}' onclick="onClickSubmit({{post.pk}}, {{user.pk}})"><i class="ri-arrow-up-circle-fill"></i></div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

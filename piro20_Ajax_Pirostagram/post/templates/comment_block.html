@@ -1,0 +1,4 @@
+{% for comment in post.comment_set.all %}
+<p><span class='user-name'>{{ comment.author.username }}</span> : {{ comment.content }} 
+    {% if user == comment.author %}<i class="ri-close-circle-fill" onclick="onClickDelete({{comment.pk}}, {{post.pk}})"></i>{% endif %}</p>
+{% endfor %}
